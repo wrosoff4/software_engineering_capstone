@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form method="post" action="">
+        {{ form.hidden_tag() }}
+        <div class="w3-container w3-card-4 w3-margin w3-light-grey w3-border w3-round w3-padding">
+            <div class="w3-container w3-margin w3-blue-grey">
+                <h2 class="w3-text w3-center w3-monospace">Find Incident</h2>
+            </div>
+            <div class="w3-margin-top w3-container w3-cell-middle">
+                {{ form.search_id.label(class="w3-centered") }}
+            </div>
+            {% if form.search_id.errors %}
+                <div class="w3-container w3-cell">
+                    {{ form.search_id(class="w3-input w3-border w3-round w3-pale-red") }}
+                </div>
+                <div class="w3-small w3-card w3-panel w3-pale-red">
+                    {% for error in form.search_id.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="w3-container w3-cell">
+                    {{ form.search_id(class="w3-input w3-border w3-round") }}
+                </div>
+            {% endif %}
+            <div class="w3-section w3-center">
+                {{ form.submit_search(class="w3-button w3-blue-grey w3-border-dark-grey w3-hover-dark-grey w3-border w3-round") }}
+            </div>
+        </div>
+    </form>
+{% endblock content %}

@@ -1,0 +1,55 @@
+<!-- Created by Daniela Garcia -->
+<!-- Login Component template-->
+<head>
+    <link rel="stylesheet" href={{ url_for("static", filename="w3.css") }}>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    body, h2 {
+        font-size: 1.8rem;
+        font-family: 'Inconsolata', monospace;
+    }
+    ul {
+            list-style-type: none;
+            padding: 5px;
+            margin: 5px;
+            color: #b60303;
+    }
+
+</style>
+
+
+
+<body class="w3-blue-grey">
+<div class="w3-container w3-display-middle">
+    <div class="w3-card-4 w3-padding w3-grey w3-border w3-border-grey w3-round">
+
+        <h2 class="w3-center w3-justify ">North Carolina Highway Patrol</h2>
+        <h2 class="w3-center w3-justify ">Incident Reporting Terminal</h2>
+
+        <form id="login" action="{{ url_for('main.login') }}" method="post">
+            <div class="w3-padding w3-center">
+                <input class="w3-border" placeholder="username" autocomplete="new-password"
+                       type="text" id="username" name="username"/>
+            </div>
+            <div class="w3-padding w3-center">
+                <input class="w3-border" type="password" id="password" name="password"
+                       placeholder="password" autocomplete="new-password"/>
+            </div>
+            <div class="w3-center w3-padding w3-margin">
+            <input class="w3-round" type="submit"
+                   id="Log in" value="Log in"/>
+            </div>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes w3-center w3-justify">
+            {% for message in messages %}
+            <li><i>{{ message }}</i></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+</body>

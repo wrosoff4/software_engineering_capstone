@@ -1,0 +1,227 @@
+{% extends 'layout.html' %}
+{% block styles %}
+    <style>
+    hr {
+        height: 1px;
+        background-color: #9e9e9e;
+        border: none;
+    }
+    </style>
+{% endblock styles %}
+{% block scripts %}
+{% endblock scripts %}
+{% block content %}
+    <div class="w3-container w3-card-4 w3-light-grey w3-margin w3-padding  w3-monospace">
+        <div class="w3-container w3-blue-grey">
+            <h2 class="w3-monospace w3-center w3-text-white">Viewing Incident {{ inc.id }}</h2>
+        </div>
+{#        DATE/TIME/LOCATION #}
+        <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+            <tr class="w3-section w3-grey">
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center" style="width: 20%">
+                    Date
+                </th>
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center" style="width: 20%">
+                    Time
+                </th>
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center" style="width: 30%">
+                    Location
+                </th>
+                <th class="w3-center" style="width: 30%">County</th>
+            </tr>
+            <tr class="w3-section w3-white">
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.date }}
+                </td>
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.time }}</td>
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.location }}</td>
+                <td class="w3-center">{{ inc.county }}</td>
+            </tr>
+        </table>
+{#        INVESTIGATORS #}
+        <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+            <tr class="w3-section w3-grey">
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center" style="width: 50%">
+                    Primary Investigator
+                </th>
+                <th class="w3-center">Assisting Investigator</th>
+            </tr>
+            <tr class="w3-section w3-white">
+                {#      PRIMARY INVESTIGATOR #}
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.creator.name }}
+                </td>
+                {#      ASSISTING#}
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.secondaries_string() }}
+                </td>
+            </tr>
+        </table>
+{#        SEV/PED/VEH #}
+        <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+            <tr class="w3-section w3-grey">
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    Severity
+                </th>
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    Pedestrians
+                </th>
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    Vehicles
+                </th>
+            </tr>
+            <tr class="w3-section w3-white">
+{#                SEVERITY #}
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ sev }}
+                </td>
+                {#      NUM PEDESTRIANS#}
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.num_pedestrians }}
+                </td>
+                {#      NUM VEHICLES#}
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.vehicles | length }}
+                </td>
+            </tr>
+        </table>
+        <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+            <tr class="w3-section w3-grey">
+                <th class="w3-center w3-border-right w3-border-dark-grey w3-center" style="width: 50%">
+                    Photos Taken
+                </th>
+                <th class="w3-center">Photographer</th>
+            </tr>
+            <tr class="w3-section w3-white">
+                {#      Photos taken #}
+                {% if inc.photos_taken %}
+                    <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                        Yes
+                    </td>
+                {% else %}
+                    <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                        No
+                    </td>
+                {% endif %}
+                {#      photographer#}
+                <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                    {{ inc.photographer }}
+                </td>
+            </tr>
+        </table>
+{#        INITIAL ASSOCIATION LINKS #}
+{#        <div class="w3-container w3-margin w3-center">#}
+{#            <a class="w3-button w3-blue-grey w3-hover-dark-grey w3-border w3-border-dark-grey w3-hover-dark-grey w3-round"#}
+{#               href="{{ url_for('report_manager.add_vehicle', incident_id=inc.id) }}">#}
+{#                Associate Vehicle#}
+{#            </a>#}
+{#            <a class="w3-button w3-blue-grey w3-hover-dark-grey w3-border w3-border-dark-grey w3-hover-dark-grey w3-round"#}
+{#               href="{{ url_for('report_manager.add_object', incident_id=inc.id) }}">#}
+{#                Associate Object#}
+{#            </a>#}
+{#        </div>#}
+        <hr>
+{#    Vehicle Tables #}
+        <div class="w3-container">
+            {% for vehicle in inc.vehicles %}
+                <div class="w3-container w3-center w3-half">
+                    <h2 class="w3-section w3-margin-top w3-center w3-text w3-monospace w3-border-dark-grey">
+                        Vehicle {{ loop.index }}
+                    </h2>
+                    <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                        <tr class="w3-section w3-grey">
+                            <th class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                                State/License
+                            </th>
+                            <th class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                                Number of Occupants
+                            </th>
+                            <th class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                                Vehicle Weight
+                            </th>
+                        </tr>
+                        <tr class="w3-section w3-white">
+                            {# vehicle license #}
+                            <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                                {{ vehicle.vehicle.state+"/"+vehicle.vehicle.plate }}
+                            </td>
+                            {#      vehicle occupants#}
+                            <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                                {{ vehicle.vehicle.num_occupants }}
+                            </td>
+                            {#      vehicle weight #}
+                            <td class="w3-center w3-border-right w3-border-dark-grey w3-center">
+                                {{ vehicle.vehicle.weight }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+{#        Add Vehicle Link#}
+        <div class="w3-section w3-center">
+            <a class="w3-button w3-blue-grey w3-hover-dark-grey w3-border w3-round w3-border-dark-grey"
+            href={{ url_for('report_manager.add_vehicle', incident_id=inc.id) }}>
+                Associate Vehicle
+            </a>
+        </div>
+        <hr>
+{#    Objects Table #}
+        <div class="w3-container">
+            <table class="w3-table w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey">Item</th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">N or RP1</th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">S or RP2</th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">East</th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">West</th>
+                    <th>Object Measured</th>
+                </tr>
+                {% for obj in inc.objects %}
+                    <tr class="w3-section w3-white">
+                        {% if loop.index0 < 26 %}
+                            <td class="w3-center w3-border w3-border-dark-grey">
+                                {{ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[loop.index0] }}
+                            </td>
+                        {% else %}
+                            <td class="w3-center w3-border w3-border-dark-grey">
+                                {{ loop.index0 - 25 }}
+                            </td>
+                        {% endif %}
+                        <td class="w3-center w3-border w3-border-dark-grey">
+                            {{ obj.north_or_rp1 }}
+                        </td>
+                        <td class="w3-center w3-border w3-border-dark-grey">
+                            {{ obj.south_or_rp2 }}
+                        </td>
+                        <td class="w3-center w3-border w3-border-dark-grey">
+                            {{ obj.east }}
+                        </td>
+                        <td class="w3-center w3-border w3-border-dark-grey">
+                            {{ obj.west }}
+                        </td>
+                        <td class="w3-center w3-border w3-border-dark-grey">
+                            {{ obj.object_type }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+{#        Add Object Link#}
+        <div class="w3-section w3-center">
+            <a class="w3-button w3-blue-grey w3-hover-dark-grey w3-border w3-round w3-border-dark-grey"
+            href={{ url_for('report_manager.add_object', incident_id=inc.id) }}>
+                Associate Object
+            </a>
+        </div>
+        <hr>
+            <div class="w3-section w3-center">
+            <a class="w3-button w3-blue-grey w3-hover-dark-grey w3-border w3-round w3-border-dark-grey"
+            href={{ url_for('report_manager.report', incident_id=inc.id) }}>
+                Printable Report
+            </a>
+        </div>
+    </div>
+{% endblock content %}

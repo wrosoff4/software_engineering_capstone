@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href={{ url_for("static", filename="w3.css") }}>
+    <title>Damage widget</title>
+
+    <script>
+        let damageArray = [];
+
+        function handleCellClick(cell) {
+            if (cell.className.indexOf("unselected_cell") > -1) {
+                cell.className = cell.className.replace("unselected_cell", "selected_cell");
+                damageArray.push(cell.id)
+                document.getElementById("arrPrint").innerHTML = JSON.stringify(damageArray);
+            } else {
+                cell.className = cell.className.replace("selected_cell", "unselected_cell");
+                for (let i = 0; i < damageArray.length; i++) {
+
+                    if (damageArray[i] === cell.id) {
+                        damageArray.splice(i, 1);
+                        i--;
+                        document.getElementById("arrPrint").innerHTML = JSON.stringify(damageArray);
+                    }
+                }
+            }
+        }
+
+        function handleButtonClick() {
+            $(".selected_cell").each(function (index) {
+                console.log($(this).prop('id'));
+            });
+        }
+
+        function getDamage() {
+            document.getElementById("damage").value = JSON.stringify(damageArray);
+        }
+
+
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+</head>
+<body>
+
+<table class="damage">
+    <th class="damage_th" colspan="3">Vehicle Damage</th>
+    <tr class="damage">
+        <td id="left front" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="middle front" class="unselected_cell" onclick="handleCellClick(this);"><img
+                src={{ url_for('static', filename='arrowup.svg') }} width="20" height="20"></td>
+
+        <td id="right front" class="unselected_cell" onclick="handleCellClick(this);"></td>
+    </tr>
+    <tr class="damage">
+        <td id="left cabin front" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="middle cabin front" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="right cabin front" class="unselected_cell" onclick="handleCellClick(this);"></td>
+    </tr>
+    <tr class="damage">
+        <td id="left cabin back" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="middle cabin back" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="right cabin back" class="unselected_cell" onclick="handleCellClick(this);"></td>
+    </tr>
+    <tr class="damage">
+        <td id="left back" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="middle back" class="unselected_cell" onclick="handleCellClick(this);"></td>
+
+        <td id="right back" class="unselected_cell" onclick="handleCellClick(this);"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+1,20211110001B1,Transylvania,3,1111,submittedToSuper
+2,20211110002B1,Gotham,1,1111,Open
+3,20211110001A2,Hazzard,2,2222,pendingDmvReview
+4,20211108001C1,Hope County,2,1111,rejected
+5,20211031002C1,Derry,1,1111,approved
+6,20211011001B2,Haddonfield,3,2222,underSuperReview
+7,20211111002A2,Hazzard,1,2222,rejectedBySuper

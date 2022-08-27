@@ -1,0 +1,60 @@
+{% extends "hr_layout.html" %}
+{% block content %}
+    <div class="column is-4 is-offset-4">
+        <h3 class="title">Create new User</h3>
+        <div class="box">
+            <form method="POST" action="">
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="str" name="name_field" placeholder="User name" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="int" name="id_field" placeholder="User ID" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="str" name="role_field" placeholder="User Role" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="email" name="email_field" placeholder="Email" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="str" name="date_field" placeholder="Date Added" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="str" name="precinct_field" placeholder="Precinct" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="" type="str" name="password_field" placeholder="Confirm Password" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        Save as
+                    </label>
+                </div>
+                <button class="button is-block is-info is-large is-fullwidth">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

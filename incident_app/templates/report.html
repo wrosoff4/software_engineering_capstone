@@ -1,0 +1,437 @@
+{% block content %}
+    <head>
+        <link rel="stylesheet" href={{ url_for("static", filename="w3.css") }}>
+    </head>
+    <div>
+        {# NAV BAR #}
+        <nav class="w3-bar w3-mobile w3-blue-grey w3-border-top w3-border-right w3-border-sand">
+            {# Home #}
+            <a href="{{ url_for('main.home_page') }}"
+               class="w3-bar-item w3-button w3-hover-light-grey w3-dark-grey w3-border-right w3-border-sand">
+                Home
+            </a>
+        </nav>
+        {# END NAV BAR#}
+    </div>
+
+    <div class="w3-margin w3-padding w3-justify-content w3-center monospace">
+        <h2>North Carolina State Highway Patrol</h2>
+        <h2><b>FIELD DIAGRAM AND MEASUREMENTS OF COLLISION SCENE</b></h2>
+        <h2>Incident #{{ incident_id }}</h2>
+    </div>
+
+    <div class="w3-responsive w3-margin w3-padding w3-justify-content w3-center monospace">
+
+
+        <table class="w3-table w3-border w3-border-black">
+            <tr class="w3-grey w3-border w3-border-black">
+                <th class="w3-border w3-border-black">Date of Incident:</th>
+                <th class="w3-border w3-border-black">Time of Incident:</th>
+                <th class="w3-border w3-border-black">Location:</th>
+                <th class="w3-border w3-border-black">County:</th>
+            </tr>
+            <tr class="w3-border w3-border-dark-gray">
+                <td class="w3-border w3-border-black" id="date"></td>
+                <td class="w3-border w3-border-black" id="time"></td>
+                <td class="w3-border w3-border-black" id="location"></td>
+                <td class="w3-border w3-border-black" id="county"></td>
+            </tr>
+            <tr>
+                <th colspan="1" class="w3-grey w3-border w3-border-black">Prepared by:</th>
+                <th colspan="3" class="w3-grey">Assisted by:</th>
+            </tr>
+            <tr class="w3-border w3-border-dark-gray">
+                <td colspan="1" class="w3-border w3-border-black" id="officer"></td>
+                <td colspan="3" id="assisting"></td>
+            </tr>
+            <tr>
+                <th colspan="1" class="w3-grey w3-border w3-border-black">Crash Sequence Number:</th>
+                <th colspan="3" class="w3-grey">Severity:</th>
+            </tr>
+            <tr class="w3-border w3-border-dark-gray">
+                <td colspan="1" class="w3-border w3-border-black" id="crash_seq"></td>
+                <td colspan="3" id="severity"></td>
+            </tr>
+            <tr>
+                <th colspan="1" class="w3-grey w3-border w3-border-black">Photographs Taken:</th>
+                <th colspan="3" class="w3-grey">Photographer:</th>
+            </tr>
+            <tr class="w3-border w3-border-dark-gray">
+                <td colspan="1" class="w3-border w3-border-black" id="photos_taken"></td>
+                <td colspan="3" id="photographer"></td>
+            </tr>
+        </table>
+
+        <br>
+        <table class="w3-table w3-border w3-border-black">
+            <tr class="w3-border w3-border-black">
+                <th class="w3-border w3-border-black w3-grey">Date of Incident:</th>
+                <td class="w3-border w3-border-black" id="date_draw"></td>
+                <th class="w3-border w3-border-black w3-grey">Time of Incident:</th>
+                <td class="w3-border w3-border-black" id="time_draw"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <th colspan="4" class="w3-border w3-border-black w3-grey w3-center">Diagram of Post-Collision Scene</th>
+            </tr>
+            <tr>
+                <td colspan="4" class="w3-border w3-border-black w3-center">
+                    <p><i class="Warning">**Drawing not to scale!**</i></p>
+                    <canvas id="mycanvas" height="500" width="600"></canvas>
+                </td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <th colspan="2" class="w3-border w3-border-black w3-grey">Method of Scene Measurements:</th>
+                <th colspan="2" class="w3-border w3-border-black w3-grey">Measuring Devices:</th>
+
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td colspan="2" class="w3-border w3-border-black">Triangulation</td>
+                <td colspan="2" class="w3-border w3-border-black">Rolling Meter</td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <th class="w3-border w3-border-black w3-grey">Item</th>
+                <th class="w3-border w3-border-black w3-grey">RP1</th>
+                <th class="w3-border w3-border-black w3-grey">RP2</th>
+                <th class="w3-border w3-border-black w3-grey">Object Measured</th>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">A</td>
+                <td class="w3-border w3-border-black" id="RP1_A"></td>
+                <td class="w3-border w3-border-black" id="RP2_A"></td>
+                <td class="w3-border w3-border-black" id="OBJ_A"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">B</td>
+                <td class="w3-border w3-border-black" id="RP1_B"></td>
+                <td class="w3-border w3-border-black" id="RP2_B"></td>
+                <td class="w3-border w3-border-black" id="OBJ_B"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">C</td>
+                <td class="w3-border w3-border-black" id="RP1_C"></td>
+                <td class="w3-border w3-border-black" id="RP2_C"></td>
+                <td class="w3-border w3-border-black" id="OBJ_C"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">D</td>
+                <td class="w3-border w3-border-black" id="RP1_D"></td>
+                <td class="w3-border w3-border-black" id="RP2_D"></td>
+                <td class="w3-border w3-border-black" id="OBJ_D"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">E</td>
+                <td class="w3-border w3-border-black" id="RP1_E"></td>
+                <td class="w3-border w3-border-black" id="RP2_E"></td>
+                <td class="w3-border w3-border-black" id="OBJ_E"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">F</td>
+                <td class="w3-border w3-border-black" id="RP1_F"></td>
+                <td class="w3-border w3-border-black" id="RP2_F"></td>
+                <td class="w3-border w3-border-black" id="OBJ_F"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">G</td>
+                <td class="w3-border w3-border-black" id="RP1_G"></td>
+                <td class="w3-border w3-border-black" id="RP2_G"></td>
+                <td class="w3-border w3-border-black" id="OBJ_G"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">H</td>
+                <td class="w3-border w3-border-black" id="RP1_H"></td>
+                <td class="w3-border w3-border-black" id="RP2_H"></td>
+                <td class="w3-border w3-border-black" id="OBJ_H"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">I</td>
+                <td class="w3-border w3-border-black" id="RP1_I"></td>
+                <td class="w3-border w3-border-black" id="RP2_I"></td>
+                <td class="w3-border w3-border-black" id="OBJ_I"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">J</td>
+                <td class="w3-border w3-border-black" id="RP1_J"></td>
+                <td class="w3-border w3-border-black" id="RP2_J"></td>
+                <td class="w3-border w3-border-black" id="OBJ_J"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">K</td>
+                <td class="w3-border w3-border-black" id="RP1_K"></td>
+                <td class="w3-border w3-border-black" id="RP2_K"></td>
+                <td class="w3-border w3-border-black" id="OBJ_K"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">L</td>
+                <td class="w3-border w3-border-black" id="RP1_L"></td>
+                <td class="w3-border w3-border-black" id="RP2_L"></td>
+                <td class="w3-border w3-border-black" id="OBJ_L"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">M</td>
+                <td class="w3-border w3-border-black" id="RP1_M"></td>
+                <td class="w3-border w3-border-black" id="RP2_M"></td>
+                <td class="w3-border w3-border-black" id="OBJ_M"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">N</td>
+                <td class="w3-border w3-border-black" id="RP1_N"></td>
+                <td class="w3-border w3-border-black" id="RP2_N"></td>
+                <td class="w3-border w3-border-black" id="OBJ_N"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">O</td>
+                <td class="w3-border w3-border-black" id="RP1_O"></td>
+                <td class="w3-border w3-border-black" id="RP2_O"></td>
+                <td class="w3-border w3-border-black" id="OBJ_O"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">P</td>
+                <td class="w3-border w3-border-black" id="RP1_P"></td>
+                <td class="w3-border w3-border-black" id="RP2_P"></td>
+                <td class="w3-border w3-border-black" id="OBJ_P"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">Q</td>
+                <td class="w3-border w3-border-black" id="RP1_Q"></td>
+                <td class="w3-border w3-border-black" id="RP2_Q"></td>
+                <td class="w3-border w3-border-black" id="OBJ_Q"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">R</td>
+                <td class="w3-border w3-border-black" id="RP1_R"></td>
+                <td class="w3-border w3-border-black" id="RP2_R"></td>
+                <td class="w3-border w3-border-black" id="OBJ_R"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">S</td>
+                <td class="w3-border w3-border-black" id="RP1_S"></td>
+                <td class="w3-border w3-border-black" id="RP2_S"></td>
+                <td class="w3-border w3-border-black" id="OBJ_S"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">T</td>
+                <td class="w3-border w3-border-black" id="RP1_T"></td>
+                <td class="w3-border w3-border-black" id="RP2_T"></td>
+                <td class="w3-border w3-border-black" id="OBJ_T"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">U</td>
+                <td class="w3-border w3-border-black" id="RP1_U"></td>
+                <td class="w3-border w3-border-black" id="RP2_U"></td>
+                <td class="w3-border w3-border-black" id="OBJ_U"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">V</td>
+                <td class="w3-border w3-border-black" id="RP1_V"></td>
+                <td class="w3-border w3-border-black" id="RP2_V"></td>
+                <td class="w3-border w3-border-black" id="OBJ_V"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">W</td>
+                <td class="w3-border w3-border-black" id="RP1_W"></td>
+                <td class="w3-border w3-border-black" id="RP2_W"></td>
+                <td class="w3-border w3-border-black" id="OBJ_W"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">X</td>
+                <td class="w3-border w3-border-black" id="RP1_X"></td>
+                <td class="w3-border w3-border-black" id="RP2_X"></td>
+                <td class="w3-border w3-border-black" id="OBJ_X"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">Y</td>
+                <td class="w3-border w3-border-black" id="RP1_Y"></td>
+                <td class="w3-border w3-border-black" id="RP2_Y"></td>
+                <td class="w3-border w3-border-black" id="OBJ_Y"></td>
+            </tr>
+            <tr class="w3-border w3-border-black">
+                <td class="w3-border w3-border-black">Z</td>
+                <td class="w3-border w3-border-black" id="RP1_Z"></td>
+                <td class="w3-border w3-border-black" id="RP2_Z"></td>
+                <td class="w3-border w3-border-black" id="OBJ_Z"></td>
+            </tr>
+        </table>
+        <p class="page_break"></p>
+        <br>
+
+
+    </div>
+    <script src="{{ url_for('static', filename='pen.js') }}"></script>
+    <script>
+
+        function prep_surface() {
+            // draw background and road
+            let p = new Pen("mycanvas");
+            p.canvas.translate(.5, .5);
+            p.pensize(2).fillstyle("gray");
+            p.jump(0, 0).right(580).down(480).left(780).up(580).close().draw();
+            p.penstyle("white").fillstyle("black")
+            p.jump(0, 195).right(580).down(100).left(580).up(100).close().draw();
+            p.penstyle("rgb(255, 196, 0)").pensize(2);
+            p.jump(0, 245).right(580).draw();
+            p.penstyle("black").pensize(2).fillstyle("rgba(0, 0, 200, 0)"); // redraw frame
+            p.jump(0, 0).right(580).down(480).left(580).up(480).draw(); // redraw frame
+            draw_references();
+        }
+
+        function draw_references() {
+            // draw reference points
+            let rp = new Pen("mycanvas");
+            rp.pensize(4);
+            rp.penstyle("#00f").fillstyle("#00f");
+            rp.jump(150, 330).down(4).left(4).up(8).right(8).down(8).left(8).draw();
+            rp.jump(430, 330).down(4).left(4).up(8).right(8).down(8).left(8).draw();
+            rp.font("16px Consolas").fillstyle("#fff");
+            rp.jump(135, 360).text("rp1");
+            rp.jump(415, 360).text("rp2");
+        }
+
+        function draw_car(rf, rb, lb, lf) {
+            let car = new Pen("mycanvas")
+            car.pensize(2);
+            car.penstyle("green").fillstyle("green");
+            car.jump(rf[0], rf[1]).goto(rb[0], rb[1]).goto(lb[0], lb[1]).goto(lf[0], lf[1]).goto(rf[0], rf[1]).draw();
+            car.font("16px Consolas").fillstyle("#fff");
+            {#car.jump(rf[0], rf[1]).text("rf");#}
+            {#car.jump(lf[0], lf[1]).text("lf");#}
+            {#car.jump(lb[0], lb[1]).text("lb");#}
+            {#car.jump(rb[0], rb[1]).text("rb");#}
+            {#car.jump(rf[0] + 10, rb[0] - 10).text("vehicle");#}
+        }
+
+        function draw_point(name, X, Y) {
+            let obj = new Pen("mycanvas");
+            obj.pensize(2);
+            obj.penstyle("yellow").fillstyle("yellow");
+            obj.jump(X, Y).down(5).up(10).down(5).left(5).right(10).draw();
+            obj.font("16px Consolas").fillstyle("#fff");
+            obj.jump(X - 15, Y - 28).text(name);
+        }
+
+        function draw_skid(name, X, Y) {
+            let skid = new Pen("mycanvas");
+            skid.pensize(2);
+            skid.penstyle("red").fillstyle("red");
+            skid.jump(X, Y).down(5).up(10).down(5).left(5).right(10).draw();
+            skid.font("16px Consolas").fillstyle("#fff");
+            skid.jump(X - 15, Y - 28).text(name);
+        }
+
+        function draw_aoi(X, Y) {
+            console.log(X, Y)
+            let aoi = new Pen("mycanvas");
+            aoi.pensize(2);
+            aoi.penstyle("white").fillstyle("white");
+            aoi.jump(X, Y).down(5).up(10).down(5).left(5).right(10).draw();
+            aoi.font("16px Consolas").fillstyle("#fff");
+            aoi.jump(X - 15, Y - 28).text("AOI");
+        }
+
+        function plot_data(meas) {
+
+            Object.keys(meas).forEach(function (key) {
+                console.log(key);
+                if (key === 'Invalid') {
+                    prep_surface();
+                    let inv = new Pen("mycanvas");
+                    inv.font("16px Consolas").fillstyle("black");
+                    inv.jump(90 - 15, 150 - 15).text("Invalid measurements. Unable to render drawing!");
+                    return;
+                }
+
+                if (key !== 'rp1rp2') {
+                    if (key.includes('skid')) {
+                        draw_skid(key, meas[key][0], meas[key][1])
+                    } else if (key.includes('body')) {
+                        draw_point('body', meas[key][0], meas[key][1]);
+                    } else if (key.includes('aoi')) {
+                        draw_aoi(meas[key][0], meas[key][1]);
+                    } else if (key.includes('unit') && meas[key].length === 4) {
+                        let rf = meas[key][1];
+                        let rb = meas[key][0];
+                        let lb = meas[key][2];
+                        let lf = meas[key][3];
+                        draw_car(rf, rb, lb, lf);
+                    } else {
+                        draw_point(key, meas[key][0], meas[key][1]);
+                    }
+                }
+            });
+        }
+
+        function fill_table(meas) {
+            let pointer = 0;
+            let list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+            Object.keys(report).forEach(function (key) {
+                {#console.log(report[key])#}
+                {#console.log(report[key].length)#}
+                {#console.log(Array.isArray(report[key][0]))#}
+
+                if (report[key].length === 4) {
+
+                    document.getElementById('OBJ_' + list[pointer]).innerHTML = key.toUpperCase() + " RIGHT REAR";
+                    document.getElementById('RP1_' + list[pointer]).innerHTML = report[key][0][0];
+                    document.getElementById('RP2_' + list[pointer]).innerHTML = report[key][0][1];
+                    pointer += 1;
+                    document.getElementById('OBJ_' + list[pointer]).innerHTML = key.toUpperCase() + " RIGHT FRONT";
+                    document.getElementById('RP1_' + list[pointer]).innerHTML = report[key][1][0];
+                    document.getElementById('RP2_' + list[pointer]).innerHTML = report[key][1][1];
+                    pointer += 1;
+                    document.getElementById('OBJ_' + list[pointer]).innerHTML = key.toUpperCase() + " LEFT REAR";
+                    document.getElementById('RP1_' + list[pointer]).innerHTML = report[key][2][0];
+                    document.getElementById('RP2_' + list[pointer]).innerHTML = report[key][2][1];
+                    pointer += 1;
+                    document.getElementById('OBJ_' + list[pointer]).innerHTML = key.toUpperCase() + " LEFT FRONT";
+                    document.getElementById('RP1_' + list[pointer]).innerHTML = report[key][3][0];
+                    document.getElementById('RP2_' + list[pointer]).innerHTML = report[key][3][1];
+                    pointer += 1;
+                } else if (report[key].length === 1) {
+                    document.getElementById('OBJ_' + list[pointer]).innerHTML = key.toUpperCase();
+                    document.getElementById('RP1_' + list[pointer]).innerHTML = report[key][0][0];
+                    document.getElementById('RP2_' + list[pointer]).innerHTML = report[key][0][1];
+                    pointer += 1;
+                } else {
+                    document.getElementById('OBJ_' + list[pointer]).innerHTML = key.toUpperCase();
+                    document.getElementById('RP1_' + list[pointer]).innerHTML = report[key][0];
+                    document.getElementById('RP2_' + list[pointer]).innerHTML = report[key][1];
+                    pointer += 1;
+                }
+            });
+
+
+        }
+
+        report = {{ for_report|tojson|safe }};
+
+
+        meas =  {{data|tojson|safe}};
+        console.log(meas);
+        prep_surface();
+        plot_data(meas);
+        fill_table(meas);
+
+        record =  {{incident_data|tojson|safe}};
+        document.getElementById('date').innerHTML = record['date'];
+        document.getElementById('time').innerHTML = record['time'];
+        document.getElementById('location').innerHTML = record['location'];
+        document.getElementById('county').innerHTML = record['county'];
+        document.getElementById('officer').innerHTML = record['officer_name'];
+        document.getElementById('assisting').innerHTML = record['assisting'];
+        document.getElementById('crash_seq').innerHTML = record['crash_seq'];
+        document.getElementById('severity').innerHTML = record['severity'];
+        document.getElementById('date_draw').innerHTML = record['date'];
+        document.getElementById('time_draw').innerHTML = record['time'];
+        if (record['photos_taken'].toString() === 'true') {
+            document.getElementById('photos_taken').innerHTML = 'Yes'
+        } else {
+            document.getElementById('photos_taken').innerHTML = 'No'
+        }
+
+        document.getElementById('photographer').innerHTML = record['photographer'];
+
+    </script>
+
+
+
+{% endblock content %}

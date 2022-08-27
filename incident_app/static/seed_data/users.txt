@@ -1,0 +1,9 @@
+1111,Mario Schmuckatelli,aPutz@ontheroof.com,$pbkdf2-sha256$29000$eK.1tlYKgXCO8f4/h1AqpQ$Uj9zBTO/d/hn3rYSbINamBsVJXZUJafBR1FI/txtnFc,1
+2222,Al Coholic,wait@whereami.edu,$pbkdf2-sha256$29000$ICRkjHGu1dpbS2ktZaw1Rg$QI0Uqgn0VdIo5tzLm/4628ne1mxzZ5zEevgHpLm52Y8,2
+3333,Jaques Strap,whats@thatsmell.com,$pbkdf2-sha256$29000$p9TaG4Pw3lur9T7H2Ns7Rw$b6GMMYGwTnfyDPiLi/JMp4W8GTdMRFV/Mn.JZL0S7DA,3
+4444,I.P. Freely,something@somewhere.net,$pbkdf2-sha256$29000$/d.7l1IKgTBmrFVKaW1tjQ$YYjQbZzkJEDp4m0iFZNZQTZ3ZTBPG6aRqI3vYC9r4N8,1
+5555,Amanda Hugginkiss,email@provider.com,$pbkdf2-sha256$29000$PyfknNM6x7j3vhdCCKFUSg$rllnbC89PMnZxFBYdWTjWvTvlUqbqW3Si6ZNnsDxI4g,1
+6666,Seymour Buttz,stooge1@threestooges.com,$pbkdf2-sha256$29000$WIsxhhACAEBoLcXYG0OoNQ$5uNcROde98LCubQIYzocXx7jrd0aPlU0bLH2/dfTxwc,3
+7777,Monkey D. Luffy,giterdone@cableguy.edu,$pbkdf2-sha256$29000$iNEag9D6HwOAsPZeK0UIoQ$Tfy9VSFa104zG1N2rrsyCC9sfsdDfQRdBmSk14Jjzeo,2
+8888,Hugh Jazz,jazzguy@ihatemusic.com,$pbkdf2-sha256$29000$ztn7/x8jBMAY4/x/b01JiQ$zVxIqrKmeTICuVnuWkjNn79oPzlCbmtaIuvGAhFZO38,1
+9999,Eura Snotball,asmr@hottubstream.com,$pbkdf2-sha256$29000$sXaOMQagFOJcK0VIydnbGw$MM/JPJdpFDKruB4IQMWmNQ16jdiJQqnJbl8expSvozs,1

@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form method="post" action="">
+        <div class="w3-container w3-card-4 w3-light-grey w3-margin w3-padding  w3-monospace">
+            <div class="w3-container w3-blue-grey">
+                <h2 class="w3-monospace w3-center w3-text-white">
+                    Create New Incident
+                </h2>
+            </div>
+            {{ form.hidden_tag() }}
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey" style="width: 20%">
+                        {{ form.date.label() }}<br>
+                        <small class="w3-small">
+                            MM/DD/YYYY</small>
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey" style="width: 20%">
+                        {{ form.time.label() }}<br>
+                        <small class="w3-small">
+                            hh:mm (24-hr)
+                        </small>
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey" style="width: 30%">
+                        {{ form.location.label() }}</th>
+                    <th class="w3-center" style="width: 30%">{{ form.county.label() }}</th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    {% if form.date.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.date(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.date.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.date(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    <td class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.time(class="w3-input w3-center w3-border w3-round") }}</td>
+                    <td class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.location(class="w3-input w3-center w3-border w3-round") }}
+                    </td>
+                    <td class="w3-center">{{ form.county(class="w3-input w3-center w3-border w3-round") }}</td>
+                </tr>
+            </table>
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey" style="width: 50%">
+                        {{ form.badge_num.label() }}
+                    </th>
+                    <th class="w3-center">{{ form.assisted_by.label() }}</th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    {#      PRIMARY INVESTIGATOR #}
+                    {% if form.badge_num.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.badge_num(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.badge_num.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.badge_num(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {#      ASSISTING#}
+                    {% if form.assisted_by.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.assisted_by(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.assisted_by.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.assisted_by(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                </tr>
+            </table>
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.severity_select.label() }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.pedestrians.label() }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.vehicles.label() }}
+                    </th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    {#                    <td class="w3-center w3-border-right w3-border-dark-grey w3-center">#}
+                    {#                        {{ form.severity_select(class='w3-input w3-center') }}#}
+                    {#                    </td>#}
+                    {% if form.severity_select.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.severity_select(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.severity_select.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.severity_select(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {#      PEDESTRIANS#}
+                    {% if form.pedestrians.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.pedestrians(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.pedestrians.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.pedestrians(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {#      VEHICLES#}
+                    {% if form.vehicles.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.vehicles(class="w3-input w3-pale-red w3-center w3-border w3-round") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.vehicles.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.vehicles(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                </tr>
+            </table>
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.photos_taken.label() }}
+                    </th>
+                    <th class="w3-center">{{ form.photographer.label() }}</th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    <td class="w3-center w3-border-right w3-border-dark-grey" style="width: 50%">
+                        {{ form.photos_taken(class="w3-check") }}
+                    </td>
+                    <td class="w3-center">
+                        {{ form.photographer(class="w3-input w3-center w3-border w3-round") }}
+                    </td>
+                </tr>
+            </table>
+            <small class="w3-small w3-text-black w3-pale-red"><i>* is a required field</i></small>
+            <div class="w3-section w3-center">
+                {{ form.to_vehicles(class="w3-btn w3-border w3-border-dark-grey w3-round w3-blue-grey w3-hover-dark-grey") }}
+                {{ form.close(class="w3-btn w3-border w3-border-dark-grey w3-round w3-blue-grey w3-hover-dark-grey") }}
+                <a class="w3-btn w3-border w3-border-red w3-round w3-pale-red w3-hover-red w3-hover-border-pale-red"
+                   href="{{ url_for('report_manager.new_incident') }}">
+                    Reset Form
+                </a>
+
+            </div>
+        </div>
+    </form>
+{% endblock content %}

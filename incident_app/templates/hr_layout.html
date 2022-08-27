@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='w3.css') }}">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Foo</title>
+    {% endif %}
+</head>
+
+<body>
+{# SIDE BAR #}
+<div class="w3-sidebar w3-mobile w3-blue-grey w3-bar-block"
+     style="width:20%">
+    <h2 class="w3-bar-item w3-blue-grey">Menu</h2>
+    <a href="{{ url_for('hr.create_account') }}"
+       class="w3-bar-item w3-mobile w3-button w3-dark-grey w3-hover-light-grey">
+        Create user
+    </a>
+    <a href="{{ url_for('hr.edit_user') }}"
+       class="w3-bar-item w3-mobile w3-button w3-dark-grey w3-hover-light-grey">
+        Edit user
+    </a>
+    <a href="{{ url_for('hr.remove_user') }}"
+       class="w3-bar-item w3-mobile w3-button w3-dark-grey w3-hover-light-grey">
+        Delete user
+    </a>
+</div>
+{# END SIDE BAR #}
+<div style="margin-left: 20%">
+    {# NAV BAR #}
+    <div class="w3-bar w3-mobile w3-blue-grey">
+        {# Home #}
+        <a href="{{ url_for('hr.hr_home') }}"
+           class="w3-bar-item w3-button w3-hover-grey w3-dark-grey">
+            Home
+        </a>
+        {# Login #}
+        <a href="{{ url_for('main.login_page') }}"
+           class="w3-bar-item w3-button w3-dark-grey w3-hover-grey w3-right">
+            Login
+        </a>
+    </div>
+    {# END NAV BAR#}
+    {# CUSTOM ROUTE CONTENT#}
+    {% block content %}
+    {% endblock %}
+    {# END CUSTOM CONTENT #}
+</div>
+</body>
+
+</html>

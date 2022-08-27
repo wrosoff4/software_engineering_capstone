@@ -1,0 +1,8 @@
+1,NC,ASD-1234,Honda,Accord,Black,1,8000
+2,NC,FGH-4567,Oldsmobile,Cutlass,Grey,2,2300
+3,SC,DSF-3461,Toyota,RAV4,Blue,1,7349
+4,NV,AS-3452,Ford,F-150,Black,2,12203
+5,VA,WER-4562,Honda,Gold Wing,Yellow,1,2000
+6,NC,GFH-7456,Mercedes,GLE450,White,3,7163
+7,NC,S0V41N,Dodge,Charger,Orange,1,5456
+8,KY,GWE-7896,Pontiac,Firebird,Red,2,6432

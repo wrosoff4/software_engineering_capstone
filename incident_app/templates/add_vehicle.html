@@ -1,0 +1,232 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form method='post' action="">
+        {{ form.hidden_tag() }}
+        <div class="w3-container w3-card-4  w3-monospace w3-margin w3-border w3-round w3-padding w3-light-grey">
+            <div class="w3-container w3-blue-grey ">
+                <h2 class="w3-text w3-center w3-text-white">
+                    Register A New Vehicle
+                </h2>
+            </div>
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.incident_id.label }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.state.label }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.plate.label }}
+                    </th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    {% if form.incident_id.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.incident_id(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.incident_id.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.incident_id(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {% if form.state.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.state(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.state.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.state(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {% if form.plate.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.plate(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.plate.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.plate(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                </tr>
+            </table>
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.num_occupants.label }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.weight.label }}
+                    </th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    {% if form.num_occupants.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.num_occupants(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.num_occupants.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.num_occupants(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {% if form.weight.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.weight(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.weight.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.weight(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+            </table>
+            <table class="w3-table w3-margin-top w3-border w3-border-dark-grey">
+                <tr class="w3-section w3-grey">
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.make.label }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.model.label }}
+                    </th>
+                    <th class="w3-center w3-border-right w3-border-dark-grey">
+                        {{ form.color.label }}
+                    </th>
+                </tr>
+                <tr class="w3-section w3-white">
+                    {% if form.make.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.make(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.make.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.make(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {% if form.model.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.model(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.model.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.model(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                    {% if form.color.errors %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.color(class="w3-input w3-center w3-border w3-round w3-pale-red") }}
+                        </td>
+                        <div class="w3-small w3-card w3-panel w3-pale-red">
+                            {% for error in form.color.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <td class="w3-center w3-border-right w3-border-dark-grey">
+                            {{ form.color(class="w3-input w3-center w3-border w3-round") }}
+                        </td>
+                    {% endif %}
+                </tr>
+            </table>
+            <small class="w3-section w3-small w3-pale-red"><i>* is a required field</i></small>
+            <br>
+            <div class="w3-container w3-center w3-margin-top">
+                <div class="w3-container w3-half">
+                    <table class="w3-table w3-border w3-border-dark-grey">
+                        <tr class="w3-grey w3-border-top w3-border-dark-grey">
+                            <th class="w3-center w3-border-right w3-border-dark-grey">
+                                Distance
+                            </th>
+                            <th class="w3-center">
+                                (ft.)
+                            </th>
+                        </tr>
+                        <tr class="w3-white w3-border-top w3-border-dark-grey">
+                            <td class="w3-center w3-border-right w3-border-dark-grey">
+                                {{ form.skid_before.label }}
+                            </td>
+                            <td class="w3-center">
+                                {{ form.skid_before(class="w3-input w3-center w3-border w3-round") }}
+                            </td>
+                        </tr>
+                        <tr class="w3-white w3-border w3-border-dark-grey">
+                            <td class="w3-center w3-border-right w3-border-dark-grey">
+                                {{ form.skid_after.label }}
+                            </td>
+                            <td class="w3-center">
+                                {{ form.skid_after(class="w3-input w3-center w3-border w3-round") }}
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="w3-table w3-border w3-border-dark-grey">
+                        <tr class="w3-grey w3-border-top w3-border-dark-grey">
+                            <th class="w3-center w3-border-right w3-border-dark-grey">
+                                Airbags
+                            </th>
+                            <th class="w3-center">
+                                Deployed
+                            </th>
+                        </tr>
+                        <tr class="w3-white w3-border-top w3-border-dark-grey">
+                            <td class="w3-center w3-border-right w3-border-dark-grey">
+                                {{ form.airbag_front.label }}
+                            </td>
+                            <td class="w3-center">
+                                {{ form.airbag_front(class="w3-check w3-border w3-round") }}
+                            </td>
+                        </tr>
+                        <tr class="w3-white w3-border w3-border-dark-grey">
+                            <td class="w3-center w3-border-right w3-border-dark-grey">
+                                {{ form.airbag_side.label }}
+                            </td>
+                            <td class="w3-center">
+                                {{ form.airbag_side(class="w3-check w3-border w3-round") }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="w3-container w3-half">
+                    {% include 'damage.html' %}
+                </div>
+            </div>
+            <div class="w3-section w3-center">
+                {{ form.submit(onclick="getDamage()", class="w3-btn w3-border w3-border-dark-grey w3-round w3-blue-grey w3-hover-dark-grey") }}
+                {{ form.submit_and_continue(onclick="getDamage()", class="w3-btn w3-border w3-border-dark-grey w3-round w3-blue-grey w3-hover-dark-grey") }}
+                {{ form.damage(id='damage', value='') }}
+            </div>
+        </div>
+    </form>
+{% endblock content %}

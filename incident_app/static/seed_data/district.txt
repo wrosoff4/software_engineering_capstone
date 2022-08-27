@@ -1,0 +1,55 @@
+A,1,2601 N Croatan Highway, Suite 105,252-441-7341,Kill Devil Hills,NC,27948
+B,1,2435 Gillespie Street,910-486-1334,Fayetteville,NC,28306-3051
+C,1,2617 North Wesleyan Boulevard,252-446-8144,Rocky Mount,NC,27804-8655
+D,1,1103 Northwest Second Avenue,919-742-2124,Siler City,NC,27344
+E,1,2314 South Main Street,336-481-0025,Lexington,NC,27292
+F,1,115 Government Dr.,828-438-6291,Morganton,NC,28655
+G,1,116 North Main Street,828-682-2579,Burnsville,NC,28714
+H,1,2560 West Franklin Boulevard,704-853-5373,Gastonia,NC,28052
+A,2,242 NC 42 W.,252-332-6800,Ahoskie,NC,27910
+B,2,305 North Boulevard,910-592-3141,Clinton,NC,28328
+C,2,701 West Grantham Street,919-344-0225,Goldsboro,NC,27530
+D,2,2527 East Market Street,336-256-2058,Greensboro,NC,27401
+E,2,611 Concord Road,704-983-4134,Albemarle,NC,28001
+F,2,1230 School Street,336-667-1236,Wilkesboro,NC,28697
+G,2,3975 NC-226 South,828-652-2181,Marion,NC,28752
+H,2,200 College Drive,910-557-9091,Hamlet,NC,28345
+A,3,1164 U.S. 17 South,252-340-8240,Elizabeth City,NC,27909
+B,3,305 Wilmington Highway,910-347-1751,Jacksonville,NC,28540
+C,3,1831 Blue Ridge Road,919-733-4400,Raleigh,NC,27607
+D,3,111 Wilson-Way Road,336-634-5606,Reidsville,NC,27320
+E,3,5780 South Main Street,704-639-7574,Salisbury,NC,28147
+F,3,309 Pine Mountain Road,828-726-2500,Hudson,NC,28638
+G,3,125 Baystone Drive,828-693-4141,Hendersonville,NC,28791
+H,3,2206 Fowler Secrest Road,704-283-8101,Monroe,NC,28110
+A,4,1821 Carolina Avenue,252-946-7731,Washington,NC,27889
+B,4,133 Routledge Road,910-296-1311,Kenansville,NC,28349
+C,4,1080 Eastern Boulevard,252-438-8101,Henderson,NC,27536
+D,4,3434 Burlington Road,336-599-9233,Roxboro,NC,27573
+E,4,2001 Silas Creek Parkway,336-793-9550,Winston-Salem,NC,27103
+F,4,905 Carolina Avenue North,704-878-4221,Statesville,NC,28677
+G,4,600 Tunnel Road,828-298-4256,Asheville,NC,28805-1995
+H,4,1914 East Dixon Boulevard,704-751-1181,Shelby,NC,28152-6943
+A,5,4651-A North Creek Dr.,252-752-6118,Greenville,NC,27834
+B,5,917 Washington Street,910-642-7169,Whiteville,NC,28472
+C,5,1822 SW Goldsboro St.,252-237-5294,Wilson,NC,27893
+D,5,1045 Cedar Crest Drive,336-570-6809,Graham,NC,27253
+E,5,101-B Rains Street,336-296-3116,King,NC,27021
+F,5,3265 U.S. 70 Southeast,828-466-5528,Newton,NC,28658
+G,5,294 Lee Road,828-627-2851,Clyde,NC,28721
+H,5,12101 Mt. Holly-Huntersville Rd,980-224-6070,Huntersville,NC,28078
+A,6,1001 Downey Dr.,252-514-4714,New Bern,NC,28562
+B,6,1 Station Road,910-395-3917,Wilmington,NC,28405
+C,6,3783 US 301 South,919-934-2186,Four Oaks,NC,27524
+D,6,300 Country Club Drive,336-318-4784,Asheboro,NC,27205
+E,6,2192 Kannapolis Highway,704-786-2197,Concord,NC,28027
+G,6,2650 Governors Island Road,828-488-2184,Bryson City,NC,28713
+H,6,521 South Sandhills Boulevard,910-728-4488,Huntersville,NC,28078
+A,7,2214 West Vernon Avenue,252-522-1511,Kinston,NC,28501
+B,7,4650 Kahn Drive,910-618-5555,Lumberton,NC,28358
+C,7,101 S. Miami Blvd.,919-560-6868,Durham,NC,27703
+D,7,1201 U.S. 70 West,919-732-2551,Hillsborough,NC,27278
+E,7,124 S. Salisbury St.,336-477-2154,Mocksville,NC,27028
+A,8,5347 Hwy 70 West,252-726-5766,Morehead City,NC,28557
+B,8,1005-A Edwards Drive,910-893-5704,Lillington,NC,27546
+C,8,26 Three Bridge Road,252-200-3490,Roanoke Rapids,NC,27870

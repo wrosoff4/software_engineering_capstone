@@ -1,0 +1,9 @@
+1111,Mario Schmuckatelli,aPutz@ontheroof.com,password,1
+2222,Al Coholic,wait@whereami.edu,testing,2
+3333,Jaques Strap,whats@thatsmell.com,guest,3
+4444,I.P. Freely,something@somewhere.net,simpson,1
+5555,Amanda Hugginkiss,email@provider.com,guest123,1
+6666,Seymour Buttz,stooge1@threestooges.com,testing123,3
+7777,Monkey D. Luffy,giterdone@cableguy.edu,onepiece,2
+8888,Hugh Jazz,jazzguy@ihatemusic.com,musiclover,1
+9999,Eura Snotball,asmr@hottubstream.com,onetwothree,1
