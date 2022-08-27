@@ -1,0 +1,77 @@
+Trooper --> [Login Page] --> <Create Form><tab>
+				--> Trooper Create Form()
+
+					- Create form
+
+					- Submit to database for Supervisor review
+
+					- Notify supervisor to review
+
+
+Trooper --> [Login Page] --> <Review Form><tab>
+				--> Trooper Review Form()
+
+					- Pull flagged form ()
+
+					- Get DMV Status ()
+
+						if DMV Approve/Complete
+							- Pull form in amendment view
+							- make changes
+							- document changes
+						else
+							- make changes
+
+					- Submit to database for supervisor review
+					- notify supervisor to review
+
+
+
+Supervisor --> [Login page] --> <Review Form><tab>
+					-> Supervisor Review form()
+
+						- Pull flagged form()
+
+						- Get DMV Status() = (Approve/Complete | Reject | Null)
+						
+						if [Supervisor Makes Changes()] = (YES | NO)
+							if DMV Approve/Complete
+								- Pull form in amendment view
+								- make changes
+								- document changes
+			
+							else
+								- Make changes
+						else
+
+						- Set Supervisor Status (Approve|Reject)
+
+						if Supervisor Approve & DMV Approve
+							- Submit to database, no further review
+						
+						elif Supervisor Approve & DMV Null
+							- Submit to database for DMV review
+							- Notify DMV to review
+						else
+							- Submit to database for Trooper Review
+							- Notify Trooper
+
+DMV --> [Database] --> <Review><tab>
+				--> DMV Review Form()
+
+					-Pull Flagged Form()
+
+					-Set DMV Status (Approve/Complete | Reject)
+
+					-Submit form to database, Flag as (Approve/Complete | Reject)
+
+					if Approve/Complete
+						-Notify Supervisor(Complete)
+						-Notify Trooper(complete)
+
+					else
+						-Notify Supervisor(Reject)
+						-Notify Trooper(Reject)
+				
+
+		
